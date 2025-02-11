@@ -48,9 +48,9 @@ async def get_books() -> OrderedDict[int, Book]:
     return db.get_books()
 
 
-# Gets a single post
+# Implements the get book route
 @router.get("/{book_id}", response_model=Book, status_code=status.HTTP_200_OK)
-def get_book(book_id: int) -> dict:
+async def get_book(book_id: int) -> Book:
     """Route to get a single Post"""
     
     book = db.get_book(book_id)
